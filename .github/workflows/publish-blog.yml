@@ -80,9 +80,12 @@ jobs:
         with:
           node-version: 20
 
-      # FIX: Removed npm install -g to resolve isolated dependencies (like vue) cleanly via npx runtime bundle isolation
+      # FIX: Force local installation of both vitepress and vue to guarantee the bundler resolves module pathways
+      - name: Install VitePress and Dependencies Locally
+        run: npm install vitepress vue
+
       - name: Compile Markdown to Premium HTML Blog
-        run: npx --yes vitepress build docs
+        run: npx vitepress build docs
 
       - name: Setup GitHub Pages Web Environment
         uses: actions/configure-pages@v4
