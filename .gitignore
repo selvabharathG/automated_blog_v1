@@ -1,0 +1,30 @@
+﻿# Environment variables
+.env
+.env.local
+
+# Virtual Environments
+venv/
+env/
+ENV/
+automated_blog/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs
+logs/
+
+# Test files
+tests/test_research_agent.py
+test_nvidia.py
+sanitizer.py
+notes.txt
