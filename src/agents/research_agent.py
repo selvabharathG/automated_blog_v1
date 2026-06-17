@@ -266,17 +266,17 @@ class ResearchAgent:
     def compile_post(self, blog_post: str, metadata: Dict[str, str], topic: str) -> str:
         """Compile final markdown post with frontmatter"""
         
-        frontmatter = textwrap.dedent(f"""\
-    ---
-    title: "{metadata['title']}"
-    description: "{metadata['meta_description']}"
-    date: {metadata['date']}
-    author: "Research Agent"
-    tags: {metadata['tags']}
-    topic: "{topic}"
-    slug: {metadata['slug']}
-    ---
-    """).strip() + "\n\n"
+        frontmatter = f"""---
+title: "{metadata['title']}"
+description: "{metadata['meta_description']}"
+date: {metadata['date']}
+author: "Research Agent"
+tags: {metadata['tags']}
+topic: "{topic}"
+slug: {metadata['slug']}
+---
+
+"""
         
         return frontmatter + blog_post
     
