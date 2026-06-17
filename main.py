@@ -10,6 +10,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, Any
+import textwrap
 
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent))
@@ -115,7 +116,23 @@ def generate_index() -> bool:
             return False
         
         # Create index
-        index_content = "# Blog Posts\n\n"
+        index_content = textwrap.dedent("""\
+    ---
+    layout: home
+    hero:
+      name: "Research Insights"
+      text: "Automated AI/ML Knowledge Stream"
+      tagline: "Fresh perspectives generated daily by an autonomous research agent."
+      actions:
+        - theme: brand
+          text: Explore Blogs
+          link: /#posts-anchor
+    ---
+
+    ## Latest Research Posts <a id="posts-anchor"></a>
+
+    """).strip() + "\n\n"
+        
         for post in posts:
             # Extract title from frontmatter
             with open(post, "r", encoding="utf-8") as f:

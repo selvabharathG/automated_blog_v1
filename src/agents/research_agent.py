@@ -10,6 +10,7 @@ from datetime import datetime
 from typing import Dict, List, Any, Optional
 from urllib.parse import quote
 import time
+import textwrap
 
 from src.utils.logger import get_logger
 from src.utils.config_manager import config
@@ -265,17 +266,17 @@ class ResearchAgent:
     def compile_post(self, blog_post: str, metadata: Dict[str, str], topic: str) -> str:
         """Compile final markdown post with frontmatter"""
         
-        frontmatter = f"""---
-title: "{metadata['title']}"
-description: "{metadata['meta_description']}"
-date: {metadata['date']}
-author: "Research Agent"
-tags: {metadata['tags']}
-topic: "{topic}"
-slug: {metadata['slug']}
----
-
-"""
+        frontmatter = textwrap.dedent(f"""\
+    ---
+    title: "{metadata['title']}"
+    description: "{metadata['meta_description']}"
+    date: {metadata['date']}
+    author: "Research Agent"
+    tags: {metadata['tags']}
+    topic: "{topic}"
+    slug: {metadata['slug']}
+    ---
+    """).strip() + "\n\n"
         
         return frontmatter + blog_post
     
