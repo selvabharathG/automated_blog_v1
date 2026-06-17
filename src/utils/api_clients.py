@@ -40,9 +40,11 @@ class GroqClient(LLMClient):
     def __init__(self):
         try:
             from groq import Groq
-            self.client = Groq(
-                api_key=config.get_env("GROQ_API_KEY")
-            )
+            api_key = config.get_env("GROQ_API_KEY")
+            if not api_key:
+                raise ValueError("GROQ_API_KEY not found in environment")
+            # Initialize with minimal parameters to avoid compatibility issues
+            self.client = Groq(api_key=api_key)
             self.model = config.get("llm.groq.model", "mixtral-8x7b-32768")
             self.rate_limit = 60  # requests per minute
             self.last_request_time = 0
