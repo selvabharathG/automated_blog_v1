@@ -108,15 +108,14 @@ def share_social_media(result: Dict[str, Any]) -> bool:
 def generate_index() -> bool:
     """Generate blog index page"""
     try:
-        # FIX: Look in the exact same folder where the posts are being saved
         blog_dir = Path("docs", "posts")
         posts = sorted(blog_dir.glob("*.md"), reverse=True)
         
         if not posts:
-            logger.warning(f"No blog posts found in directory: {blog_dir.resolve()}")
+            logger.warning("No blog posts found")
             return False
         
-        # Create index
+        # Base home layout setup
         index_content = f"""---
 layout: home
 hero:
@@ -132,24 +131,28 @@ hero:
 ## Latest Research Posts <a id="posts-anchor"></a>
 
 """
-        
-        for post in posts:
-            # Extract title from frontmatter
-            with open(post, "r", encoding="utf-8") as f:
-                content = f.read()
-                # Simple extraction (in production, use proper YAML parsing)
-                title = post.stem.replace("_", " ").title()
-                index_content += f"- [{title}](posts/{post.name})\n"
-        
+
+        # FIX: Generate clean router links for VitePress
+        for post_path in posts:
+            # 1. Extract just the file name without '.md' (e.g., "2026-06-17_unlock-aiml-potential")
+            clean_slug = post_path.stem
+            
+            # 2. Extract the clean title from the filename or a simple format for the link text
+            # (Or parse frontmatter title if your script does that)
+            display_title = clean_slug.replace('_', ' ').replace('-', ' ').title()
+            
+            # 3. Append the structurally correct link to your homepage content array
+            # VitePress routing syntax must look exactly like: [Title](/posts/filename)
+            index_content += f"* [{display_title}](/posts/{clean_slug})\n"
+
+        # Write the updated clean index out to disk
         index_path = Path("docs", "index.md")
-        with open(index_path, "w", encoding="utf-8") as f:
-            f.write(index_content)
-        
-        logger.info("Blog index updated")
+        index_path.write_text(index_content, encoding="utf-8")
+        logger.info("Successfully updated homepage with clean web routing links!")
         return True
-    
+
     except Exception as e:
-        logger.warning(f"Failed to generate index: {e}")
+        logger.error(f"Failed to generate index: {str(e)}")
         return False
 
 def main() -> int:
