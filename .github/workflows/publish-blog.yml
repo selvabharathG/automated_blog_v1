@@ -80,11 +80,9 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install VitePress Builder
-        run: npm install -g vitepress
-
+      # FIX: Removed npm install -g to resolve isolated dependencies (like vue) cleanly via npx runtime bundle isolation
       - name: Compile Markdown to Premium HTML Blog
-        run: vitepress build docs
+        run: npx --yes vitepress build docs
 
       - name: Setup GitHub Pages Web Environment
         uses: actions/configure-pages@v4
