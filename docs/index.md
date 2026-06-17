@@ -12,7 +12,7 @@ hero:
 
 ## Latest Research Posts <a id="posts-anchor"></a>
 
-- [2026-06-17 Unlock-Web-Development-Trends](posts/2026-06-17_unlock-web-development-trends.md)
-- [2026-06-17 Unlock-Devops-Potential](posts/2026-06-17_unlock-devops-potential.md)
-- [2026-06-17 Unlock-Aiml-Potential](posts/2026-06-17_unlock-aiml-potential.md)
-- [2026-06-17 Mastering-Cloud-Architecture](posts/2026-06-17_mastering-cloud-architecture.md)
+* [2026 06 17 Unlock Web Development Trends](/posts/2026-06-17_unlock-web-development-trends)
+* [2026 06 17 Unlock Devops Potential](/posts/2026-06-17_unlock-devops-potential)
+* [2026 06 17 Unlock Aiml Potential](/posts/2026-06-17_unlock-aiml-potential)
+* [2026 06 17 Mastering Cloud Architecture](/posts/2026-06-17_mastering-cloud-architecture)
