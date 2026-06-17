@@ -2,7 +2,7 @@ name: Publish Blog Post
 
 on:
   schedule:
-    # 8 AM SGT = 12 AM UTC (0:00 UTC)
+    # 8 AM SGT = 12 AM UTC
     - cron: '0 0 * * *'
   
   workflow_dispatch:  # Allow manual trigger
@@ -33,7 +33,7 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
       
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
@@ -55,56 +55,45 @@ jobs:
         run: |
           python main.py
       
-      # FIX 1: Track the whole blog directory for flexible change detection
+      # Track the new docs folder for new blog posts written by Python
       - name: Check for changes
         id: verify_changed_files
         run: |
-          if git diff --quiet blog/; then
+          if git diff --quiet docs/; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
       
-      # FIX 1: Commit and push all blog modifications up to the repository branch
+      # Commit the raw .md file permanently back to GitHub branch
       - name: Commit and push changes
         if: steps.verify_changed_files.outputs.changed == 'true'
         run: |
-          git add blog/*
+          git add docs/*
           git commit -m "Auto: Publish daily blog post - $(date +'%Y-%m-%d')"
           git push
+
+      # --- VITEPRESS BUILD AND DEPLOY STEPS ---
       
-      # FIX 2: Target the internal web directory structure and prepare it for server upload
-      - name: Setup GitHub Pages Environment
-        if: success()
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install VitePress Builder
+        run: npm install -g vitepress
+
+      - name: Compile Markdown to Premium HTML Blog
+        run: vitepress build docs
+
+      - name: Setup GitHub Pages Web Environment
         uses: actions/configure-pages@v4
 
-      # FIX 2: Bundle ONLY the blog content folder to shield your engine codebase
-      - name: Package Site Folder
-        if: success()
+      # CRITICAL SAFETY: Upload only the final compiled HTML code, hiding everything else!
+      - name: Package HTML Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './blog'
+          path: 'docs/.vitepress/dist'
 
-      # FIX 2: Push the server compilation container asset live
-      - name: Deploy Isolated Blog To Internet
-        if: success()
+      - name: Deploy Live To Internet
         uses: actions/deploy-pages@v4
-      
-      - name: Upload logs on failure
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: blog-generation-logs
-          path: logs/
-          retention-days: 7
-      
-      - name: Notify on success
-        if: success() && steps.verify_changed_files.outputs.changed == 'true'
-        run: |
-          echo "✅ Blog post published and deployment pushed to GitHub Pages!"
-      
-      - name: Notify on failure
-        if: failure()
-        run: |
-          echo "❌ Blog generation or hosting pipeline failed"
-          echo "Check logs in artifacts for details"

@@ -51,7 +51,7 @@ def publish_blog_post(result: Dict[str, Any]) -> bool:
             return False
         
         # Save to blog directory
-        blog_dir = Path("blog/posts")
+        blog_dir = Path("docs/posts")
         blog_dir.mkdir(parents=True, exist_ok=True)
         
         metadata = result.get("metadata", {})
@@ -124,7 +124,7 @@ def generate_index() -> bool:
                 title = post.stem.replace("_", " ").title()
                 index_content += f"- [{title}](posts/{post.name})\n"
         
-        index_path = Path("blog/index.md")
+        index_path = Path("docs/index.md")
         with open(index_path, "w", encoding="utf-8") as f:
             f.write(index_content)
         
