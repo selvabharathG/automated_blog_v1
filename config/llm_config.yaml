@@ -1,0 +1,175 @@
+# LLM Model Configuration
+# Configure AI models for content generation
+
+# ========== PRIMARY LLM SETUP ==========
+llm:
+  primary: "groq"  # Options: groq, claude, ollama
+  fallback: "ollama"  # Fallback if primary fails
+  timeout_seconds: 60
+
+  # ========== GROQ (Free Tier) ==========
+  # Fastest free LLM - Best for production
+  # Rate limit: 60 requests/minute
+  groq:
+    enabled: true
+    api_key_env: "GROQ_API_KEY"
+    
+    models:
+      - name: "llama-3.3-70b-versatile"
+        description: "Most powerful, best quality"
+        context_window: 8192
+        recommended: true
+      
+      - name: "llama-3.1-8b-instant"
+        description: "Fast, good for quick tasks"
+        context_window: 8192
+      
+      - name: "openai/gpt-oss-20b"
+        description: "Alternative model"
+        context_window: 8192
+    
+    # Default model
+    model: "llama-3.3-70b-versatile"
+    
+    # Generation parameters
+    parameters:
+      temperature: 0.7  # Creativity (0=deterministic, 1=creative)
+      max_tokens: 2000  # Max output length
+      top_p: 0.9  # Nucleus sampling
+      
+      # Groq specific rate limiting
+      rate_limit:
+        requests_per_minute: 60
+        requests_per_day: 5000
+
+  # ========== CLAUDE (Optional - Anthropic) ==========
+  # Excellent quality but limited free tier
+  claude:
+    enabled: false  # Set to true if you have API key
+    api_key_env: "ANTHROPIC_API_KEY"
+    
+    model: "claude-3-haiku-20240307"  # Fastest free model
+    
+    parameters:
+      temperature: 0.7
+      max_tokens: 2000
+
+  # ========== OLLAMA (Local - Free) ==========
+  # Run locally on your machine, completely free
+  # Install from: https://ollama.ai
+  ollama:
+    enabled: false  # Set to true if Ollama is running
+    base_url: "http://localhost:11434"
+    
+    models:
+      - name: "neural-chat"
+        description: "Good for chat and content"
+        recommended: true
+      
+      - name: "mistral"
+        description: "Powerful but slower"
+      
+      - name: "llama2"
+        description: "Popular, good quality"
+    
+    model: "neural-chat"
+    
+    parameters:
+      temperature: 0.7
+      top_p: 0.9
+
+# ========== PROMPTS FOR CONTENT GENERATION ==========
+prompts:
+  
+  # Research analysis prompt
+  research_analysis: |
+    You are an expert research analyst. Analyze the following research data and create a comprehensive, insightful summary.
+    - Extract key findings and insights
+    - Identify trends and patterns
+    - Highlight real-world applications
+    - Note any controversies or debates
+    
+    Research data: {research_data}
+    
+    Please provide a structured analysis in JSON format with sections for: key_findings, trends, applications, and discussions.
+  
+  # Blog post generation prompt
+  blog_generation: |
+    Write a blog post based on the research analysis below. The post should be:
+    - Coherent and well-structured
+    - Easy to understand for {audience_level} developers
+    - Include real-world examples and use cases
+    - Include code snippets where relevant
+    - Include actionable insights
+    - Length: approximately {word_count} words
+    - Topic: {topic}
+    
+    Analysis: {analysis}
+    
+    Please format the blog post in Markdown with appropriate headers, code blocks, and emphasis.
+  
+  # Title generation prompt
+  title_generation: |
+    Generate 5 catchy, SEO-friendly blog post titles for the following topic and summary:
+    
+    Topic: {topic}
+    Summary: {summary}
+    
+    Requirements:
+    - Include the main keyword naturally
+    - Be specific and descriptive
+    - Use action words when possible
+    - 50-60 characters preferred
+    
+    Return as JSON array: ["title1", "title2", "title3", "title4", "title5"]
+  
+  # Meta description generation
+  meta_generation: |
+    Generate an SEO-friendly meta description (150-160 characters) for:
+    
+    Title: {title}
+    Content: {content}
+    
+    Requirements:
+    - Include primary keyword
+    - Be compelling
+    - Call to action if appropriate
+    - Exactly 150-160 characters
+    
+    Return only the meta description text.
+
+# ========== CONTENT QUALITY SETTINGS ==========
+quality:
+  # Enable quality checks before publishing
+  enable_checks: true
+  
+  checks:
+    - min_word_count: 1200
+    - max_word_count: 2000
+    - min_readability_score: 50  # Flesch reading ease
+    - has_introduction: true
+    - has_conclusion: true
+    - has_examples: true
+    - has_cta: false  # Call-to-action
+
+# ========== RETRY LOGIC ==========
+retry:
+  max_attempts: 3
+  backoff_factor: 2  # exponential: wait 2s, 4s, 8s
+  timeout_seconds: 60
+  
+  # Specific retry strategies
+  on_rate_limit:
+    wait_minutes: 5
+    retry_count: 3
+  
+  on_timeout:
+    wait_seconds: 10
+    retry_count: 2
+
+# ========== MONITORING ==========
+monitoring:
+  log_api_calls: true
+  log_response_time: true
+  track_token_usage: true
+  alert_on_failures: true

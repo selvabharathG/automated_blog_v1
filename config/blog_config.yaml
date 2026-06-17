@@ -1,0 +1,157 @@
+# Blog Configuration
+# Contains blog metadata, topics, audience, and content settings
+
+blog:
+  name: "AI & Tech Insights"
+  description: "Daily research-driven blog on AI/ML, Web Development, Cloud Architecture, DevOps, and Data Science"
+  author: "Research Agent"
+  url: "https://username.github.io/blog"
+  language: "en"
+
+  # ========== TOPICS ==========
+  topics:
+    - name: "AI/ML"
+      weight: 0.25
+      keywords: ["machine learning", "deep learning", "neural networks", "LLMs", "transformers"]
+      sources:
+        - arxiv
+        - huggingface_blog
+        - github_trending
+        - medium_ai
+    
+    - name: "Web Development"
+      weight: 0.20
+      keywords: ["react", "typescript", "frontend", "backend", "fullstack", "web3"]
+      sources:
+        - github_trending
+        - dev_to
+        - css_tricks
+    
+    - name: "Cloud Architecture"
+      weight: 0.20
+      keywords: ["aws", "kubernetes", "cloud", "infrastructure", "serverless", "microservices"]
+      sources:
+        - aws_blog
+        - github_trending
+        - medium_cloud
+    
+    - name: "DevOps"
+      weight: 0.15
+      keywords: ["ci/cd", "docker", "kubernetes", "monitoring", "automation", "infrastructure"]
+      sources:
+        - github_trending
+        - dev_to
+        - hacker_news
+    
+    - name: "Data Science"
+      weight: 0.20
+      keywords: ["data analysis", "visualization", "pandas", "scikit-learn", "databases"]
+      sources:
+        - arxiv
+        - kaggle_blog
+        - medium_data
+
+  # ========== TARGET AUDIENCE ==========
+  audience:
+    primary_levels: ["Beginner", "Intermediate"]
+    secondary_levels: ["Enterprise"]
+    explanation_style: "clear and accessible"
+    include_code: true
+    code_complexity: "intermediate"
+
+  # ========== CONTENT SETTINGS ==========
+  content:
+    post_length:
+      words_target: 1500
+      words_min: 1200
+      words_max: 2000
+    
+    reading_time_minutes: "5-10"
+    
+    structure:
+      include_introduction: true
+      include_key_concepts: true
+      include_examples: true
+      include_code_snippets: true
+      include_real_world_cases: true
+      include_conclusion: true
+      include_further_reading: true
+    
+    quality_requirements:
+      - Coherent and well-structured
+      - Easy to understand for target audience
+      - Real-world practical examples
+      - Actionable insights
+      - Up-to-date information
+
+  # ========== SCHEDULING ==========
+  scheduling:
+    timezone: "Asia/Singapore"
+    publish_time: "08:00"  # 8 AM SGT
+    publish_days: ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"]
+    frequency: "daily"
+    
+    # Backup times if primary fails
+    retry_times:
+      - "10:00"
+      - "14:00"
+
+  # ========== PUBLISHING PLATFORMS ==========
+  platforms:
+    github_pages:
+      enabled: true
+      path: "blog/posts"
+      auto_commit: true
+    
+    medium:
+      enabled: false
+      api_enabled: false
+      # Enable if you have Medium partnership
+    
+    hashnode:
+      enabled: false
+    
+    dev_to:
+      enabled: false
+
+  # ========== SEO SETTINGS ==========
+  seo:
+    enabled: true
+    generate_meta_description: true
+    min_meta_length: 150
+    max_meta_length: 160
+    generate_keywords: true
+    target_keywords: 3
+    include_internal_links: true
+    generate_slug: true
+    canonical_url: "https://username.github.io/blog/"
+
+  # ========== SOCIAL MEDIA ==========
+  social_media:
+    auto_share: true
+    platforms:
+      twitter:
+        enabled: true
+        hashtags: ["#AI", "#WebDev", "#CloudArchitecture", "#DevOps", "#DataScience"]
+        include_link: true
+      
+      linkedin:
+        enabled: false
+      
+      reddit:
+        enabled: false
+
+  # ========== TAGGING & CATEGORIZATION ==========
+  tagging:
+    auto_generate_tags: true
+    max_tags_per_post: 5
+    include_topic_tag: true
+    include_difficulty_tag: true
+
+  # ========== OUTPUT SETTINGS ==========
+  output:
+    format: "markdown"
+    include_front_matter: true
+    front_matter_format: "yaml"
+    file_naming: "{date}_{slug}.md"  # Example: 2024-01-15_kubernetes_basics.md
+    date_format: "%Y-%m-%d"

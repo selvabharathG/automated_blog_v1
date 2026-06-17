@@ -1,0 +1,39 @@
+# Core Dependencies for Research Blog Agent
+
+# HTTP & Web Scraping
+aiohttp==3.9.1
+beautifulsoup4==4.12.2
+requests==2.31.0
+feedparser==6.0.10
+
+# LLM APIs (Free Tier)
+groq==0.4.2
+anthropic==0.7.1
+
+# Configuration & Environment
+python-dotenv==1.0.0
+pyyaml==6.0
+
+# Social Media & APIs
+tweepy==4.14.0
+
+# Date/Time & Timezone
+python-dateutil==2.8.2
+pytz==2023.3
+
+# Logging (Industry Standard)
+loguru==0.7.2
+
+# Development Dependencies
+pytest==7.4.2
+black==23.9.1
+flake8==6.0.0
+mypy==1.5.0
+pytest-cov==4.1.0
+
+# Optional: For local LLM
+ollama==0.6.2
+
+# Utilities
+python-slugify==8.0.1
+markdownify==0.11.6
