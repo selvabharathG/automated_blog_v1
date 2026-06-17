@@ -52,7 +52,7 @@ def publish_blog_post(result: Dict[str, Any]) -> bool:
             return False
         
         # Save to blog directory
-        blog_dir = Path("docs/posts")
+        blog_dir = Path("docs", "posts")
         blog_dir.mkdir(parents=True, exist_ok=True)
         
         metadata = result.get("metadata", {})
@@ -108,11 +108,12 @@ def share_social_media(result: Dict[str, Any]) -> bool:
 def generate_index() -> bool:
     """Generate blog index page"""
     try:
-        blog_dir = Path("blog/posts")
+        # FIX: Look in the exact same folder where the posts are being saved
+        blog_dir = Path("docs", "posts")
         posts = sorted(blog_dir.glob("*.md"), reverse=True)
         
         if not posts:
-            logger.warning("No blog posts found")
+            logger.warning(f"No blog posts found in directory: {blog_dir.resolve()}")
             return False
         
         # Create index
@@ -140,7 +141,7 @@ hero:
                 title = post.stem.replace("_", " ").title()
                 index_content += f"- [{title}](posts/{post.name})\n"
         
-        index_path = Path("docs/index.md")
+        index_path = Path("docs", "index.md")
         with open(index_path, "w", encoding="utf-8") as f:
             f.write(index_content)
         

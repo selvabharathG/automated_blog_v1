@@ -3,6 +3,7 @@
 .env.local
 
 # Virtual Environments
+.venv/
 venv/
 env/
 ENV/

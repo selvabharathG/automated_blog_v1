@@ -266,14 +266,21 @@ class ResearchAgent:
     def compile_post(self, blog_post: str, metadata: Dict[str, str], topic: str) -> str:
         """Compile final markdown post with frontmatter"""
         
+        # 1. Look for where frontmatter is defined inside your class/function.
+        # 2. Place these cleaning lines IMMEDIATELY above the frontmatter f-string:
+        clean_title = str(metadata['title']).strip('"')
+        clean_desc = str(metadata['meta_description']).strip('"')
+        clean_slug = str(metadata['slug']).strip('"')
+        clean_topic = str(topic).strip('"')
+
         frontmatter = f"""---
-title: "{metadata['title']}"
-description: "{metadata['meta_description']}"
+title: "{clean_title}"
+description: "{clean_desc}"
 date: {metadata['date']}
 author: "Research Agent"
 tags: {metadata['tags']}
-topic: "{topic}"
-slug: {metadata['slug']}
+topic: "{clean_topic}"
+slug: {clean_slug}
 ---
 
 """
