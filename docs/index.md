@@ -13,6 +13,7 @@ hero:
 ## Latest Research Posts <a id="posts-anchor"></a>
 
 * [2026 06 18 Unlock Web Development Trends](/posts/2026-06-18_unlock-web-development-trends)
+* [2026 06 18 Unlock Aiml Potential](/posts/2026-06-18_unlock-aiml-potential)
 * [2026 06 17 Unlock Web Development Trends](/posts/2026-06-17_unlock-web-development-trends)
 * [2026 06 17 Unlock Devops Potential](/posts/2026-06-17_unlock-devops-potential)
 * [2026 06 17 Unlock Aiml Potential](/posts/2026-06-17_unlock-aiml-potential)
