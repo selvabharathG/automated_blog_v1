@@ -12,6 +12,7 @@ hero:
 
 ## Latest Research Posts <a id="posts-anchor"></a>
 
+* [2026 06 22 Designing Cloud Architecture](/posts/2026-06-22_designing-cloud-architecture)
 * [2026 06 21 Unlock Data Science](/posts/2026-06-21_unlock-data-science)
 * [2026 06 20 Unlock Data Science](/posts/2026-06-20_unlock-data-science)
 * [2026 06 19 Unlock Data Science](/posts/2026-06-19_unlock-data-science)
