@@ -12,6 +12,7 @@ hero:
 
 ## Latest Research Posts <a id="posts-anchor"></a>
 
+* [2026 07 24 Unlock Web Development Trends](/posts/2026-07-24_unlock-web-development-trends)
 * [2026 07 23 Unlock Web Development Trends](/posts/2026-07-23_unlock-web-development-trends)
 * [2026 07 22 Unlock Data Science](/posts/2026-07-22_unlock-data-science)
 * [2026 07 21 Unlock Aiml Potential](/posts/2026-07-21_unlock-aiml-potential)
