@@ -12,6 +12,7 @@ hero:
 
 ## Latest Research Posts <a id="posts-anchor"></a>
 
+* [2026 08 02 Unlock Web Development Trends](/posts/2026-08-02_unlock-web-development-trends)
 * [2026 08 01 Mastering Cloud Architecture](/posts/2026-08-01_mastering-cloud-architecture)
 * [2026 07 31 Unlock Web Development Trends](/posts/2026-07-31_unlock-web-development-trends)
 * [2026 07 30 Unlock Data Science](/posts/2026-07-30_unlock-data-science)
