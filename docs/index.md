@@ -12,6 +12,7 @@ hero:
 
 ## Latest Research Posts <a id="posts-anchor"></a>
 
+* [2026 08 26 Comprehensive Guide To Data Science](/posts/2026-08-26_comprehensive-guide-to-data-science)
 * [2026 08 25 Comprehensive Guide To Cloud Architecture](/posts/2026-08-25_comprehensive-guide-to-cloud-architecture)
 * [2026 08 24 Comprehensive Guide To Devops](/posts/2026-08-24_comprehensive-guide-to-devops)
 * [2026 08 23 Comprehensive Guide To Data Science](/posts/2026-08-23_comprehensive-guide-to-data-science)
