@@ -12,6 +12,7 @@ hero:
 
 ## Latest Research Posts <a id="posts-anchor"></a>
 
+* [2026 08 30 Comprehensive Guide To Devops](/posts/2026-08-30_comprehensive-guide-to-devops)
 * [2026 08 29 Comprehensive Guide To Devops](/posts/2026-08-29_comprehensive-guide-to-devops)
 * [2026 08 28 Comprehensive Guide To Devops](/posts/2026-08-28_comprehensive-guide-to-devops)
 * [2026 08 27 Comprehensive Guide To Cloud Architecture](/posts/2026-08-27_comprehensive-guide-to-cloud-architecture)
