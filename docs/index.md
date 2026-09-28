@@ -12,6 +12,7 @@ hero:
 
 ## Latest Research Posts <a id="posts-anchor"></a>
 
+* [2026 09 28 Comprehensive Guide To Devops](/posts/2026-09-28_comprehensive-guide-to-devops)
 * [2026 09 27 Comprehensive Guide To Web Development](/posts/2026-09-27_comprehensive-guide-to-web-development)
 * [2026 09 26 Comprehensive Guide To Web Development](/posts/2026-09-26_comprehensive-guide-to-web-development)
 * [2026 09 25 Comprehensive Guide To Devops](/posts/2026-09-25_comprehensive-guide-to-devops)
