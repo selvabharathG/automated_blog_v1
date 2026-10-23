@@ -12,6 +12,7 @@ hero:
 
 ## Latest Research Posts <a id="posts-anchor"></a>
 
+* [2026 10 23 Comprehensive Guide To Web Development](/posts/2026-10-23_comprehensive-guide-to-web-development)
 * [2026 10 22 Comprehensive Guide To Aiml](/posts/2026-10-22_comprehensive-guide-to-aiml)
 * [2026 10 21 Comprehensive Guide To Aiml](/posts/2026-10-21_comprehensive-guide-to-aiml)
 * [2026 10 20 Comprehensive Guide To Data Science](/posts/2026-10-20_comprehensive-guide-to-data-science)
