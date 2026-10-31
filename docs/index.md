@@ -12,6 +12,7 @@ hero:
 
 ## Latest Research Posts <a id="posts-anchor"></a>
 
+* [2026 10 31 Comprehensive Guide To Data Science](/posts/2026-10-31_comprehensive-guide-to-data-science)
 * [2026 10 30 Comprehensive Guide To Data Science](/posts/2026-10-30_comprehensive-guide-to-data-science)
 * [2026 10 29 Comprehensive Guide To Data Science](/posts/2026-10-29_comprehensive-guide-to-data-science)
 * [2026 10 28 Comprehensive Guide To Data Science](/posts/2026-10-28_comprehensive-guide-to-data-science)
