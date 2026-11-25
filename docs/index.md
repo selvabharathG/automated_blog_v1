@@ -12,6 +12,7 @@ hero:
 
 ## Latest Research Posts <a id="posts-anchor"></a>
 
+* [2026 11 25 Comprehensive Guide To Web Development](/posts/2026-11-25_comprehensive-guide-to-web-development)
 * [2026 11 24 Comprehensive Guide To Devops](/posts/2026-11-24_comprehensive-guide-to-devops)
 * [2026 11 23 Comprehensive Guide To Aiml](/posts/2026-11-23_comprehensive-guide-to-aiml)
 * [2026 11 22 Comprehensive Guide To Cloud Architecture](/posts/2026-11-22_comprehensive-guide-to-cloud-architecture)
